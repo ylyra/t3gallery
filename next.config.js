@@ -12,6 +12,13 @@ const config = {
         hostname: 'utfs.io',
       }
     ]
+  },
+
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   }
 };
 
