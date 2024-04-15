@@ -2,7 +2,6 @@
 
 ## TODO
 
-- [ ] Make it deploy (w/ Vercel)
 - [ ] Scaffold basic ui with mock data
 - [ ] Actually set up a database (w/ vercel)
 - [ ] Attach database to UI
