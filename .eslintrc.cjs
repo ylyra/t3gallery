@@ -7,6 +7,15 @@ const config = {
   plugins: ['drizzle'],
   extends: ['next/core-web-vitals', '@rocketseat/eslint-config/next'],
   rules: {
+    '@typescript-eslint/require-await': 'error',
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
     'drizzle/enforce-delete-with-where': [
       'error',
       {

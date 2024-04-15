@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut } from '@clerk/nextjs'
 import Image from 'next/image'
+import Link from 'next/link'
 import { findImagesFromUser } from '~/server/queries/find-images'
 
 async function Images() {
@@ -8,7 +9,8 @@ async function Images() {
   return (
     <div className="container mx-auto flex flex-wrap gap-4">
       {images.map((image, idx) => (
-        <div
+        <Link
+          href={`/p/${image.id}`}
           key={String(image.id).concat('-', String(idx))}
           className="relative flex w-48 shrink-0 flex-col gap-1"
         >
@@ -21,7 +23,7 @@ async function Images() {
           />
 
           <small>{image.name}</small>
-        </div>
+        </Link>
       ))}
     </div>
   )

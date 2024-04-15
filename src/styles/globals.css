@@ -5,3 +5,8 @@
 body {
   @apply bg-neutral-950 text-neutral-50
 }
+
+/* dialog, dialog:-internal-dialog-in-top-layer {
+  max-width: 100vw;
+  max-height: 100vh;
+} */
