@@ -1,12 +1,8 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { db } from "~/server/db";
+import { findImagesFromUser } from "~/server/queries/find-images";
 
 async function Images() {
-  const images = await db.query.images.findMany({
-    orderBy(fields, operators) {
-      return operators.desc(fields.createdAt)
-    },
-  });
+  const images = await findImagesFromUser();
 
   return <div className="flex flex-wrap gap-4 container mx-auto">
   {images.map((image, idx) => (
@@ -19,8 +15,7 @@ async function Images() {
 </div>
 }
 
-export default async function HomePage() {
-
+export default function HomePage() {
   return (
     <main>
       <SignedOut>
