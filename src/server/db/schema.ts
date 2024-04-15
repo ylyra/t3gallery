@@ -6,8 +6,8 @@ import {
   index,
   pgTableCreator,
   serial,
-  timestamp,
-  varchar,
+  text,
+  timestamp
 } from "drizzle-orm/pg-core";
 
 /**
@@ -18,11 +18,12 @@ import {
  */
 export const createTable = pgTableCreator((name) => `t3gallery_${name}`);
 
-export const posts = createTable(
-  "post",
+export const images = createTable(
+  "image",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
+    name: text("name").notNull(),
+    url: text("url").notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
