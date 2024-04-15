@@ -1,28 +1,27 @@
-import "~/styles/globals.css";
+import '~/styles/globals.css'
 
-import { ClerkProvider } from "@clerk/nextjs";
-import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
-import { Inter } from "next/font/google";
-import { extractRouterConfig } from "uploadthing/server";
-import { TopNav } from "./_components/top-nav";
-import { ourFileRouter } from "./api/uploadthing/core";
+import { ClerkProvider } from '@clerk/nextjs'
+import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin'
+import { Inter } from 'next/font/google'
+import { extractRouterConfig } from 'uploadthing/server'
+import { TopNav } from './_components/top-nav'
+import { ourFileRouter } from './api/uploadthing/core'
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
 
 export const metadata = {
-  title: "T3 Gallery",
-  description: "A simple gallery app built with T3",
+  title: 'T3 Gallery',
+  description: 'A simple gallery app built with T3',
   // icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
-
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -43,5 +42,5 @@ export default function RootLayout({
         </ClerkProvider>
       </body>
     </html>
-  );
+  )
 }

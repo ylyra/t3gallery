@@ -1,11 +1,11 @@
-import 'server-only';
+import 'server-only'
 
-import { auth } from '@clerk/nextjs/server';
+import { auth } from '@clerk/nextjs/server'
 
-import { db } from '../db';
+import { db } from '../db'
 
 export async function findImagesFromUser() {
-  const user = auth();
+  const user = auth()
 
   if (!user.userId) {
     return []
