@@ -10,9 +10,15 @@ async function Images() {
       {images.map((image, idx) => (
         <div
           key={String(image.id).concat('-', String(idx))}
-          className="flex w-48 shrink-0 flex-col gap-1"
+          className="relative flex w-48 shrink-0 flex-col gap-1"
         >
-          <Image src={image.url} alt="" width={200} height={200} />
+          <Image
+            src={image.url}
+            alt=""
+            width={192}
+            height={192}
+            className="h-48 w-48 rounded object-cover"
+          />
 
           <small>{image.name}</small>
         </div>
