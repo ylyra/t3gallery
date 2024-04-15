@@ -24,7 +24,6 @@ const baseConfig = {
  * @see https://nextjs.org/docs/api-reference/next.config.js/environment-variables
  */
 const config = async (phase) => {
-  console.log(!process.env.CI && phase === PHASE_PRODUCTION_BUILD, phase);
   if (
     phase === PHASE_DEVELOPMENT_SERVER ||
     !process.env.CI && phase === PHASE_PRODUCTION_BUILD
