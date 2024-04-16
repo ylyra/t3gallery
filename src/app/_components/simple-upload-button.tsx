@@ -1,5 +1,7 @@
 'use client'
 
+import { Loader, Upload } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useUploadThing } from '~/utils/uploadthing'
 
 // inferred input off useUploadThing
@@ -26,4 +28,28 @@ export const useUploadThingInputProps = (...args: Input) => {
     },
     isUploading: $ut.isUploading,
   }
+}
+
+export function SimpleUploadButton() {
+  const router = useRouter()
+
+  const { inputProps, isUploading } = useUploadThingInputProps(
+    'imageUploader',
+    {
+      onClientUploadComplete() {
+        router.refresh()
+      },
+    },
+  )
+
+  return (
+    <label className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg hover:bg-white/10">
+      <input type="file" className="sr-only" {...inputProps} />
+      {isUploading ? (
+        <Loader className="size-4 animate-spin" />
+      ) : (
+        <Upload className="size-4" />
+      )}
+    </label>
+  )
 }
