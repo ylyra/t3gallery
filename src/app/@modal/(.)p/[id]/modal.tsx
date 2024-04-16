@@ -1,12 +1,12 @@
 'use client'
 
 import { X } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import { type ElementRef, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
+import { useDismiss } from './dismiss'
 
 export function Modal({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
+  const { onDismiss } = useDismiss()
   const dialogRef = useRef<ElementRef<'dialog'>>(null)
 
   useEffect(() => {
@@ -15,10 +15,6 @@ export function Modal({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  function onDismiss() {
-    router.back()
-  }
-
   return createPortal(
     <dialog
       ref={dialogRef}
@@ -26,7 +22,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
       onClose={onDismiss}
     >
       {children}
-      <button onClick={onDismiss} className="absolute right-3 top-3">
+      <button onClick={onDismiss} className="absolute right-3 top-3 text-white">
         <X />
       </button>
     </dialog>,
