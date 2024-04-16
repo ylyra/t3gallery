@@ -9,6 +9,9 @@ export default withUt({
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
+      gridTemplateColumns: {
+        gallery: '1fr minmax(22rem, 24rem)',
+      },
     },
   },
   plugins: [],
