@@ -8,7 +8,7 @@ export async function FullImagePage({ photoId }: { photoId: number }) {
   const uploaderInfo = await clerkClient.users.getUser(image.userId)
 
   return (
-    <section className="lg:grid-cols-gallery h-full rounded-2xl bg-neutral-950/50 lg:grid">
+    <section className="h-full rounded-2xl bg-neutral-950/50 lg:grid lg:grid-cols-gallery">
       <div className="grid h-full w-full place-items-center overflow-hidden border-r border-dashed border-neutral-50/40">
         <img
           src={image.url}
