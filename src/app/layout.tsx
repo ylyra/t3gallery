@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin'
 import { Inter } from 'next/font/google'
 import { extractRouterConfig } from 'uploadthing/server'
+import { Toaster } from '~/components/ui/sonner'
 import { TopNav } from './_components/top-nav'
 import { ourFileRouter } from './api/uploadthing/core'
 
@@ -26,7 +27,7 @@ export default function RootLayout({
   modal: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`font-sans ${inter.variable}`}>
         <NextSSRPlugin
           /**
@@ -47,6 +48,8 @@ export default function RootLayout({
           {modal}
 
           <div id="modal-root" />
+
+          <Toaster position="top-right" />
         </ClerkProvider>
       </body>
     </html>

@@ -9,7 +9,7 @@ export function TopNav() {
         <h1 className="text-xl font-semibold">Gallery</h1>
       </Link>
 
-      <div className="flex">
+      <div className="flex gap-2">
         <SignedOut>
           <SignInButton mode="modal">
             <button className="transition-colors duration-200 ease-linear hover:text-emerald-600">
@@ -17,6 +17,7 @@ export function TopNav() {
             </button>
           </SignInButton>
         </SignedOut>
+
         <SignedIn>
           <SimpleUploadButton />
           <UserButton />

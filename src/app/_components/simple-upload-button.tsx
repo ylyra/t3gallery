@@ -2,6 +2,8 @@
 
 import { Loader, Upload } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
+import { cn } from '~/lib/utils'
 import { useUploadThing } from '~/utils/uploadthing'
 
 // inferred input off useUploadThing
@@ -36,14 +38,26 @@ export function SimpleUploadButton() {
   const { inputProps, isUploading } = useUploadThingInputProps(
     'imageUploader',
     {
+      onUploadBegin(fileName) {
+        toast.loading(`Uploading ${fileName}...`, {
+          id: 'uploading-begin',
+        })
+      },
       onClientUploadComplete() {
+        toast.dismiss('uploading-begin')
+        toast.success('Upload complete')
         router.refresh()
       },
     },
   )
 
   return (
-    <label className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg hover:bg-white/10">
+    <label
+      className={cn(
+        'flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg hover:bg-white/10',
+        isUploading && 'cursor-not-allowed bg-white/10',
+      )}
+    >
       <input type="file" className="sr-only" {...inputProps} />
       {isUploading ? (
         <Loader className="size-4 animate-spin" />
