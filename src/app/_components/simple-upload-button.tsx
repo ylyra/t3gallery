@@ -2,6 +2,7 @@
 
 import { Loader, Upload } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { usePostHog } from 'posthog-js/react'
 import { toast } from 'sonner'
 import { cn } from '~/lib/utils'
 import { useUploadThing } from '~/utils/uploadthing'
@@ -34,11 +35,14 @@ export const useUploadThingInputProps = (...args: Input) => {
 
 export function SimpleUploadButton() {
   const router = useRouter()
+  const posthog = usePostHog()
 
   const { inputProps, isUploading } = useUploadThingInputProps(
     'imageUploader',
     {
       onUploadBegin(fileName) {
+        posthog.capture('upload_begin', { fileName })
+
         toast.loading(`Uploading ${fileName}...`, {
           id: 'uploading-begin',
         })
